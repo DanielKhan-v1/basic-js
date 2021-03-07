@@ -12,9 +12,10 @@ module.exports = function dateSample(sampleActivity) {
     )
         return false;
 
-    let result = Math.log10(MODERN_ACTIVITY / +sampleActivity) / HALF_LIFE_PERIOD;
+    let result =
+        Math.log(MODERN_ACTIVITY / +sampleActivity) / (0.693 / HALF_LIFE_PERIOD);
 
     if (isNaN(result)) return false;
 
-    return result;
+    return Math.ceil(result);
 };
